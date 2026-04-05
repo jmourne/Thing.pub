@@ -77,8 +77,8 @@
         
         .roadmap-cta {
             text-align: center;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
         }
         
         .roadmap-cta .btn-secondary {
@@ -219,8 +219,31 @@
         }
 
         .btn-primary { background: var(--accent-color); color: #000; }
-        .btn-secondary { border: 1px solid #444; color: #fff; }
-        .btn-secondary:hover { background: #fff; color: #000; }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            font-family: var(--serif-header);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
 
         footer {
             margin-top: 6rem;
