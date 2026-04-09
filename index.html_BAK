@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thing.pub | Secure Manuscript Distribution</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #c5a059; 
+            --border-color: #262626;
+            --serif-header: 'Playfair Display', serif;
+            --serif-body: 'Merriweather', serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--serif-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        header { text-align: center; margin-bottom: 8rem; }
+
+        h1 {
+            font-family: var(--serif-header);
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .tagline {
+            font-style: none;
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: var(--serif-header);
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        h3 {
+            font-family: var(--serif-header);
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .section { margin-bottom: 7rem; 
+        }
+        
+        .section h2 + p {
+        margin-bottom: 2.5rem;
+        }
+        
+        .roadmap-cta {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .roadmap-cta .btn-secondary {
+            padding: 1rem 3rem;
+            font-family: var(--serif-header);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .roadmap-cta .btn-secondary i {
+            margin-right: 12px;
+        }
+        
+        .roadmap-cta .btn-secondary:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
+        
+        /* Section 1: Security Priority */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .security-card {
+            background: #111;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Section 2: Split Categories */
+        .category-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .column-box {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item:last-child { margin-bottom: 0; }
+
+        .feature-item strong {
+            display: block;
+            color: var(--accent-color);
+            font-family: var(--serif-header);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-transform: none;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Reader Info Styles */
+        .protocol-content {
+            max-width: 800px;
+        }
+
+        .legal-action {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(197, 160, 89, 0.05);
+            border: 1px solid var(--border-color);
+            display: inline-block;
+        }
+
+        .legal-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+            font-family: var(--serif-header);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .legal-link i {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+        }
+
+        .legal-link:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .legal-link span {
+            border-bottom: 1px dotted #444;
+        }
+
+        .legal-link:hover span {
+            border-bottom-color: var(--accent-color);
+        }
+        /* CTA Area */
+        .cta-container {
+            text-align: center;
+            padding: 5rem 2rem;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, #111 100%);
+            margin-top: 4rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary { background: var(--accent-color); color: #000; }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            font-family: var(--serif-header);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            color: #555;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-roadmap {
+            color: #555;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .footer-roadmap i {
+            font-size: 1.1rem;
+        }
+
+        .footer-roadmap span {
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-roadmap:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-roadmap:hover span {
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 850px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+<body>   
+    <div class="container">
+        <header>
+            <h1>Thing.pub</h1>
+            <p class="tagline">Secure Manuscript Distribution | Line-Level Feedback | Reader Intelligence</p>
+        </header>
+        <section class="section">
+            <h2>The Mission</h2>
+            <p>This platform is a proprietary environment built for authors and their manuscripts. It bridges the gap between extreme IP protection and deep reader analytics, allowing authors to observe how readers engage with their work while gathering granular, line-level critiques.</p>
+        </section>       
+       <center>
+           <h2>Join the Early Adopters</h2>
+           <p>I'll be using substack to notify EAs of important information including testing, rollouts, new features, roadmap updates, and more.</p>
+           <iframe src="https://julesmourne.substack.com/embed" width="480" height="150" style="border: 0px solid #EEE; background: #0a0a0a" frameborder="0" scrolling="no"></iframe>
+       </center><br>
+        
+        <section class="section">
+            <h2>Security Measures</h2>
+            <p>To ensure 100% risk-mitigation, work on these security features takes top priority.</p>
+            <div class="security-grid">
+                <div class="security-card">
+                    <h3>Device Locking</h3>
+                    <p>Hardware fingerprinting restricts access to two unique devices per access code. No account sharing. Reduces chances of piracy.</p>
+                </div>
+                <div class="security-card">
+                    <h3>Dynamic Watermarking</h3>
+                    <p>Non-removable watermarking tied to each unique reader ID. Should a leak happen, you'll know exactly who is responsible.</p>
+                </div>
+                <div class="security-card">
+                    <h3>Anti-Piracy Hardening</h3>
+                    <p><strong>Disabled</strong> text selection, right-clicking, printing, screen-capture, and downloading.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Core Features</h2>
+            <div class="category-columns">
+                
+                <div class="column-box">
+                    <h3>Reader Feedback</h3>
+                    <div class="feature-item">
+                        <strong>Line-Level Commenting</strong>
+                        <p>Allows readers to highlight specific sections of lines for direct feedback using a proprietary commenting engine. This engine prevents text-selection and copying, while still attributing feedback to specific text sections.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Threaded Dialogue</strong>
+                        <p>Authors can choose to engage in direct conversations via threaded comments with readers within the text.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>ARC Review Prompts</strong>
+                        <p>Automated requests triggered upon completion to capture sentiment while the readers are still fresh with the story in their mind.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>'End of' Surveys</strong>
+                        <p>Short-form prompts at key narrative beats to track real-time emotional resonance can be set by authors per scene/chapter/act/etc.</p>
+                    </div>
+                </div>
+
+                <div class="column-box">
+                    <h3>Author Dashboard</h3>
+                    <div class="feature-item">
+                        <strong>Engagement Heatmaps</strong>
+                        <p>Visualize narrative drop-off points with dwell-time tracking.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Compiled Sentiment</strong>
+                        <p>Centralized oversight of reader notes categorized by intensity, context, scenes and chapters.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Completion Metrics</strong>
+                        <p>Monitor manuscript momentum and reader retention through the final act.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Private Reader Access</strong>
+                        <p>Manage individual permissions, audit logs, and keep internal notes for every invited reader.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Reader Terms</h2>
+            <div class="protocol-content">
+                <p>Transparency and mutual trust are foundational to the Thing.pub security model. All invited contributors must adhere to the proprietary distribution standards, which govern device usage, IP protection, and feedback etiquette.</p>
+                <br>
+                <div class="roadmap-cta">
+                    <a href="https://github.com/jmourne/Thing/blob/main/READER_TERMS.md" class="legal-link" target="_blank" rel="noopener">
+                        <span>Review the Reader Terms of Service</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2026 JULES MOURNE. ALL RIGHTS RESERVED. PROPRIETARY AND CONFIDENTIAL.</span>
+                <a href="https://github.com/users/jmourne/projects/1" class="footer-roadmap" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View the Roadmap</span>
+                </a>
+            </div>
+        </footer>
+</body>
+</html>
