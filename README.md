@@ -54,6 +54,5 @@ I'm looking for early adopters and various experts to help stress-test the envir
 * **Provide Feedback**: Complete our [Early Adopter Survey](https://tally.so/r/ZjY0bv).
 * **Stay Updated**: Follow the project's progress on [Substack](https://open.substack.com/pub/julesmourne) for regular updates on new features and milestones.
 * **Review Documentation**: Explore our [System Security Plan](https://github.com/jmourne/Thing.pub/wiki/System-Security-Plan) and technical architecture to understand alignment with **NIST 800-53** standards.
-* **Discord**: Link coming soon! (I am still setting the server up)
 ---
-© 2026 Jules Mourne. Proprietary and Confidential.
+© 2026 Thing.pub, Jules Mourne.
